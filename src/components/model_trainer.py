@@ -36,11 +36,11 @@ class ModelTrainer:
                 test_arr[:,-1]
             )
             models={
-                "Linear Regression": LinearRegression(),
                 "Decision Tree": DecisionTreeRegressor(),
                 "Random Forest": RandomForestRegressor(),
                 "Gradient Boosting": GradientBoostingRegressor(),
                 "XGBClassifier": XGBRegressor(),
+                "Linear Regression": LinearRegression(),
                 "k-Neighbors": KNeighborsRegressor(),
                 "CatBoosting Regressor":CatBoostRegressor(verbose=False),
                 "AdaBoost Regressor": AdaBoostRegressor()
@@ -63,7 +63,7 @@ class ModelTrainer:
             )
             predicted=best_model.predict(X_test)
             r2_score1=r2_score(y_test,predicted)
-            return r2_score1
+            return r2_score1,best_model_name,model_report
 
         except Exception as e:
             raise CustomException(e,sys)
